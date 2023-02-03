@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\User;
+use Maatwebsite\Excel\Facades\Excel as Excel;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use App\Imports\ImportUser;
 
 class Controller extends BaseController
 {
@@ -56,7 +58,7 @@ class Controller extends BaseController
             'type'=>'success'
           ]);
     }
-    public function logout(Request $request)
+    public function logout()
     {
       Auth::logout();
       return redirect()->route('login');
@@ -87,4 +89,16 @@ class Controller extends BaseController
         ], 401);
       }
     }
-}
+
+    // excel
+
+    public function importView(Request $request){
+      return view('importFile');
+    }
+
+    public function import(Request $request){
+        Excel::import(new ImportUser,
+                      $request->file('file')->store('files'));
+        return redirect()->back();
+    }
+  }
