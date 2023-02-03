@@ -25,7 +25,7 @@
           <div data-i18n="Analytics">Account</div>
         </a>
       </li>
-      <li class="menu-item ">
+      <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-book"></i>
           <div data-i18n="Layouts">Employees</div>
@@ -34,7 +34,7 @@
         <ul class="menu-sub">
 
           <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{url('/add-employee')}}" class="menu-link">
               <div data-i18n="Without menu">Add</div>
             </a>
           </li>

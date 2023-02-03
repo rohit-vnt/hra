@@ -25,3 +25,8 @@
 <!-- Helpers -->
 <script src="{{asset("assets/vendor/js/helpers.js")}}"></script>
 <script src="{{asset("assets/js/config.js")}}"></script>
+<script src="{{asset('assets/js/axios.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script>
+  const url = "{{ url('') }}";
+</script>
