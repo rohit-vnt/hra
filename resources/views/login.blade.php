@@ -22,7 +22,7 @@
 
   </head>
 
-  <body background="http://localhost/hra/public/assets/img/backgrounds/18.jpg">
+  <body background="{{asset("assets/img/backgrounds/27.jpg")}}">
     <!-- Content -->
 
     <div class="container-xxl">
@@ -33,8 +33,9 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                <a href="index.html" class="app-brand-link gap-2">
-                  <span class="app-brand-text demo text-body fw-bolder">Logo</span>
+                
+                <a href="#" class="app-brand-link gap-2">
+                  <img src="{{asset("assets/img/vnt-logo.png")}}" style="height: 50%;width: 50%;margin-left: 80px;">
                 </a>
               </div>
               <!-- /Logo -->
@@ -58,7 +59,7 @@
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
                     <a href="{{url('/forgot-password')}}">
-                      <small>Forgot Password?</small>
+                      <small></small>
                     </a>
                   </div>
                   <div class="input-group input-group-merge">
@@ -79,9 +80,9 @@
               </form>
 
               <p class="text-center">
-                <span>New on our platform?</span>
-                <a href="{{url('/register')}}">
-                  <span>Create an account</span>
+                <span>Having trouble signing in?</span>
+                <a href="{{route('forgot-password')}}">
+                  <span>reset password</span>
                 </a>
               </p>
             </div>

@@ -61,7 +61,7 @@
       <li class="menu-item">
         <a href="add-comment.html" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cog"></i>
-          <div data-i18n="Analytics">Settings</div>
+          <div data-i18n="Analytics">Settings (change pwd)</div>
         </a>
       </li>
       <li class="menu-item">

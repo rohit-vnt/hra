@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |       
 */  
-Route::view('/','login')->name('login');
-Route::view('/register','register');
-Route::view('/forgot-password','forgot-password');
+Route::get('/',function(){
+    return view('login');
+})->name('login');
+
+Route::get('/forgot-password',function(){
+    return view('forgot-password');
+})->name('forgot-password');
+
 
 Route::post('/login',[Controller::class,'login']);
 Route::get('/logout',[Controller::class,'logout']);
-
+Route::post('/resetPassword',[Controller::class,'forgetPwdMail']);
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard',function(){
         return view('index');

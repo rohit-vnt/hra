@@ -12,6 +12,10 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use App\Imports\ImportUser;
+use Illuminate\Support\Facades\Hash;
+use Mail;
+use App\Mail\forgetPwd;
+use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class Controller extends BaseController
 {
@@ -58,6 +62,7 @@ class Controller extends BaseController
             'type'=>'success'
           ]);
     }
+
     public function logout()
     {
       Auth::logout();
@@ -100,5 +105,26 @@ class Controller extends BaseController
         Excel::import(new ImportUser,
                       $request->file('file')->store('files'));
         return redirect()->back();
+    }
+    public function forgetPwdMail(Request $request)
+    {
+      $email=$request->validate([
+        'email' => 'required|string'
+      ]);
+      $isExist=User::where('email',$email)->count();
+      if($isExist>0){
+        $pwd=rand(11111,99999);
+        User::where('email',$email)->update(['password'=>hash::make($pwd)]);
+        Mail::to($email)->send(new forgetPwd($pwd));
+        return response()->json([
+          'message'=>'New password sent on your mail',
+          'type'=>'success'
+        ]);
+      }else{
+        return response()->json([
+          'message' => 'Opps! no user found with this Email Id',
+          'type'=>'failed'
+        ], 401);
+      }
     }
   }

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="{{asset("assets/vendor/css/pages/page-auth.css")}}" />
   </head>
 
-  <body background="http://localhost/hra/public/assets/img/backgrounds/18.jpg">
+  <body background="http://localhost/hra/public/assets/img/backgrounds/27.jpg">
     <!-- Content -->
 
     <div class="container-xxl">
