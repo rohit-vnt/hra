@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id',5);
             $table->string('empCode',20);
             $table->string('basic',20);
             $table->string('hra',20);

@@ -75,7 +75,7 @@ class Controller extends BaseController
         'joiningDate' => 'required|string',
         'ctc' => 'required|string',
       ]);
-  
+      $emp['user_id']=Auth::user()->id;
       $user = new Employee($emp);
       if($user->save()){
         return response()->json([

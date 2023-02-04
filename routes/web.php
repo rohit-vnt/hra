@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/addEmployee',[Controller::class,'addEmployee']);
 });
 
-Route::get('/file-import',[Controller::class,
+Route::get('/salary',[Controller::class,
             'importView'])->name('import-view');
 Route::post('/import',[Controller::class,
         'import'])->name('import');
