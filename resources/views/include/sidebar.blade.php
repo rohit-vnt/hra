@@ -27,7 +27,7 @@
       </li>
       <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bx-book"></i>
+          <i class="menu-icon tf-icons bx bxs-user-badge"></i>
           <div data-i18n="Layouts">Employees</div>
         </a>
 
@@ -46,21 +46,21 @@
           </li>
         </ul>
       </li>
-      <li class="menu-item">
-        <a href="add-domain.html" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-world"></i>
+      <li class="menu-item {{request()->segment(1)=='salary'?'active':''}}">
+        <a href="{{url('/salary')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-detail"></i>
           <div data-i18n="Analytics">Salary</div>
         </a>
       </li>
       <li class="menu-item">
         <a href="comments.html" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-detail"></i>
+          <i class="menu-icon tf-icons bx bx-export"></i>
           <div data-i18n="Analytics">Reports</div>
         </a>
       </li>
       <li class="menu-item">
         <a href="add-comment.html" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-detail"></i>
+          <i class="menu-icon tf-icons bx bx-cog"></i>
           <div data-i18n="Analytics">Settings</div>
         </a>
       </li>
