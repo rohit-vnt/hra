@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',function(){
     return view('login');
 })->name('login');
+Route::view('/login','login');
 
 Route::get('/forgot-password',function(){
     return view('forgot-password');
@@ -23,8 +24,9 @@ Route::get('/forgot-password',function(){
 
 
 Route::post('/login',[Controller::class,'login']);
-Route::get('/logout',[Controller::class,'logout']);
+Route::get('/logout',[Controller::class,'logout'])->name('logout');
 Route::post('/resetPassword',[Controller::class,'forgetPwdMail']);
+
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard',function(){
         return view('index');
@@ -39,6 +41,11 @@ Route::middleware('auth')->group(function(){
     })->name('account');
 
     Route::post('/addEmployee',[Controller::class,'addEmployee']);
+
+    Route::get('/changePwd',function(){
+        return view('changePwd');
+    })->name('changePwd');
+    Route::post('/changePwd',[Controller::class,'changePwd']);
 });
 
 Route::get('/salary',[Controller::class,

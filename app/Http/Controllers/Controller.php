@@ -127,4 +127,22 @@ class Controller extends BaseController
         ], 401);
       }
     }
+    public function changePwd(Request $request){
+      $params=$request->validate([
+        'new_pwd' => 'required|string',
+        'confirm_pwd' => 'required|string|same:new_pwd'
+      ]);
+      $update=User::where('id',Auth::user()->id)->update(['password'=>hash::make($params['new_pwd'])]);
+      if($update){
+        return response()->json([
+          'message'=>'Password Updated',
+          'type'=>'success'
+        ]);  
+      }else{
+        return response()->json([
+          'message' => 'Opps! Operation failed',
+          'type'=>'failed'
+        ], 401);
+      }
+    }
   }

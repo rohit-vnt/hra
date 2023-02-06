@@ -53,19 +53,19 @@
         </a>
       </li>
       <li class="menu-item">
-        <a href="comments.html" class="menu-link">
+        <a href="#" class="menu-link">
           <i class="menu-icon tf-icons bx bx-export"></i>
           <div data-i18n="Analytics">Reports</div>
         </a>
       </li>
       <li class="menu-item">
-        <a href="add-comment.html" class="menu-link">
+        <a href="{{route('changePwd')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cog"></i>
-          <div data-i18n="Analytics">Settings (change pwd)</div>
+          <div data-i18n="Analytics">Settings</div>
         </a>
       </li>
       <li class="menu-item">
-        <a href="login.html" class="menu-link">
+        <a href="{{route('logout')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-exit"></i>
           <div data-i18n="Analytics">Logout</div>
         </a>
