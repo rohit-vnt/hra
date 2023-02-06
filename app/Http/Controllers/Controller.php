@@ -76,6 +76,7 @@ class Controller extends BaseController
         'mobile' => 'required|string|unique:employees',
         'empCode' => 'required|string|unique:employees',
         'department' => 'required|string',
+        'designation' => 'required|string',
         'address' => 'required|string',
         'joiningDate' => 'required|string',
         'ctc' => 'required|string',
@@ -95,8 +96,7 @@ class Controller extends BaseController
       }
     }
 
-    // excel
-
+    // import excel
     public function importView(Request $request){
       return view('importFile');
     }
@@ -106,6 +106,7 @@ class Controller extends BaseController
                       $request->file('file')->store('files'));
         return redirect()->back();
     }
+    // excel end
     public function forgetPwdMail(Request $request)
     {
       $email=$request->validate([
@@ -144,5 +145,9 @@ class Controller extends BaseController
           'type'=>'failed'
         ], 401);
       }
+    }
+    public function manageEmp(){
+      $emp=Employee::orderBy('id','desc')->get();
+      return view('manage-emp',['employees'=>$emp]);
     }
   }

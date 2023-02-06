@@ -28,6 +28,7 @@ Route::get('/logout',[Controller::class,'logout'])->name('logout');
 Route::post('/resetPassword',[Controller::class,'forgetPwdMail']);
 
 Route::middleware('auth')->group(function(){
+    // login mendatory
     Route::get('/dashboard',function(){
         return view('index');
     })->name('dashboard');
@@ -46,6 +47,8 @@ Route::middleware('auth')->group(function(){
         return view('changePwd');
     })->name('changePwd');
     Route::post('/changePwd',[Controller::class,'changePwd']);
+
+    Route::get('/manage-emp',[Controller::class,'manageEmp'])->name('manage');
 });
 
 Route::get('/salary',[Controller::class,

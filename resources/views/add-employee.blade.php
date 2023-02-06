@@ -91,13 +91,13 @@
                               type="text"
                               id="firstName"
                               name="firstName"
-                              value="John"
+                              placeholder="first name"
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
+                            <input class="form-control" type="text" name="lastName" id="lastName" placeholder="last name" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -106,8 +106,7 @@
                               type="text"
                               id="email"
                               name="email"
-                              value="john.doe@example.com"
-                              placeholder="john.doe@example.com"
+                              placeholder="mail@example.com"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -135,6 +134,16 @@
                               id="department"
                               name="department"
                               placeholder="Accounts"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="department" class="form-label">Designation</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="designation"
+                              name="designation"
+                              placeholder="Employee Designation"
                             />
                           </div>
                           <div class="mb-3 col-md-6">

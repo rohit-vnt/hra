@@ -16,6 +16,7 @@ class Employee extends Model
         'mobile',
         'empCode',
         'department',
+        'designation',
         'address',
         'joiningDate',
         'ctc',

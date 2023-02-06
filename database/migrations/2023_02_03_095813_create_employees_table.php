@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('mobile',12);
             $table->string('empCode',20);
             $table->string('department',20);
+            $table->string('designation',20);
             $table->string('address');
             $table->date('joiningDate');
             $table->string('ctc',20);
