@@ -69,31 +69,62 @@ class Controller extends BaseController
       return redirect()->route('login');
     }
     public function addEmployee(Request $request){
-      $emp=$request->validate([
-        'firstName' => 'required|string',
-        'lastName' => 'required|string',
-        'email' => 'required|string|email|unique:employees',
-        'mobile' => 'required|string|unique:employees',
-        'empCode' => 'required|string|unique:employees',
-        'department' => 'required|string',
-        'designation' => 'required|string',
-        'address' => 'required|string',
-        'joiningDate' => 'required|string',
-        'ctc' => 'required|string',
-      ]);
-      $emp['user_id']=Auth::user()->id;
-      $user = new Employee($emp);
-      if($user->save()){
-        return response()->json([
-          'message'=>'Employee Added',
-          'type'=>'success'
+      
+      if(!empty($request->input('emp_id'))){
+        // update
+        $emp=$request->validate([
+          'firstName' => 'required|string',
+          'lastName' => 'required|string',
+          'email' => 'required|string|email',
+          'mobile' => 'required|string',
+          'empCode' => 'required|string',
+          'department' => 'required|string',
+          'designation' => 'required|string',
+          'address' => 'required|string',
+          'joiningDate' => 'required|string',
+          'ctc' => 'required|string',
         ]);
+        $user = Employee::where('id',$request->input('emp_id'))->update($emp);
+        if($user){
+          return response()->json([
+            'message'=>'Employee Updated',
+            'type'=>'success'
+          ]);
+        }else{
+          return response()->json([
+            'message' => 'Opps! operation failed',
+            'type'=>'failed'
+          ], 401);
+        }
       }else{
-        return response()->json([
-          'message' => 'Opps! operation failed',
-          'type'=>'failed'
-        ], 401);
+        // add
+        $emp=$request->validate([
+          'firstName' => 'required|string',
+          'lastName' => 'required|string',
+          'email' => 'required|string|email|unique:employees',
+          'mobile' => 'required|string|unique:employees',
+          'empCode' => 'required|string|unique:employees',
+          'department' => 'required|string',
+          'designation' => 'required|string',
+          'address' => 'required|string',
+          'joiningDate' => 'required|string',
+          'ctc' => 'required|string',
+        ]);
+        $emp['user_id']=Auth::user()->id;
+        $user = new Employee($emp);
+        if($user->save()){
+          return response()->json([
+            'message'=>'Employee Added',
+            'type'=>'success'
+          ]);
+        }else{
+          return response()->json([
+            'message' => 'Opps! operation failed',
+            'type'=>'failed'
+          ], 401);
+        }
       }
+      
     }
 
     // import excel
@@ -149,5 +180,22 @@ class Controller extends BaseController
     public function manageEmp(){
       $emp=Employee::orderBy('id','desc')->get();
       return view('manage-emp',['employees'=>$emp]);
+    }
+    public function deleteEmployee(Request $request){
+      $id=$request->validate([
+        'id' => 'required',
+      ]);
+      $delete=Employee::where('id',$id)->delete();
+      if($delete){
+        return response()->json([
+          'message'=>'Employee Deleted',
+          'type'=>'success'
+        ]);  
+      }else{
+        return response()->json([
+          'message' => 'Opps! Operation failed',
+          'type'=>'failed'
+        ], 401);
+      }
     }
   }

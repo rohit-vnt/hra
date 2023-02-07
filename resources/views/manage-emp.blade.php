@@ -73,7 +73,7 @@
                             <td>{{$employee->designation}}</td>
                             <td>
                               <a type="button" onclick="editEmp({{$employee}})"><i class="menu-icon tf-icons bx bx-edit"></i></a>
-                              <i class="menu-icon tf-icons bx bx-trash"></i>
+                              <a type="button" onclick="deleteEmp({{$employee->id}})"><i class="menu-icon tf-icons bx bx-trash"></i></a>
                             </td>
                           </tr>  
                           @endforeach             
@@ -99,7 +99,9 @@
     <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form id="addEmployee">
+          <form id="editEmployee">
+            @csrf
+          <input type="hidden" name="emp_id" id="emp_id">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel1">Edit</h5>
             <button
@@ -206,7 +208,7 @@
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </form>
@@ -230,8 +232,7 @@
         function show_Toaster(message, type) {
             var success = "#00b09b, #96c93d";
             var error = "#a7202d, #ff4044";
-            var ColorCode = type == "success" ? success : error;
-    
+            var ColorCode = type == "success" ? success : error;    
             return Toastify({
                 text: message,
                 duration: 3000,
@@ -250,8 +251,48 @@
           $('#table_id').DataTable();
       } );
       function editEmp(data){
-        console.log(data);
+        $('#emp_id').val(data.id)
+        $('#firstName').val(data.firstName)
+        $('#lastName').val(data.lastName)
+        $('#email').val(data.email)
+        $('#mobile').val(data.mobile)
+        $('#address').val(data.address)
+        $('#ctc').val(data.ctc)
+        $('#department').val(data.department)
+        $('#designation').val(data.designation)
+        $('#empCode').val(data.empCode)
+        $('#joiningDate').val(data.joiningDate)
         $('#basicModal').modal('show');
+      }
+      $('#editEmployee').submit(function(e){
+          e.preventDefault();
+          axios.post(`${url}/addEmployee`,new FormData(this)).then(function (response) {
+                  // handle success
+                  show_Toaster(response.data.message,response.data.type)
+                  if (response.data.type === 'success') {
+                      setTimeout(() => {
+                          window.location.href = `${url}/manage-emp`;
+                      }, 500);
+                  }
+              }).catch(function (err) {
+                  show_Toaster(err.response.data.message,'error')
+          })
+      });
+      function deleteEmp(id){
+        if (confirm('Are you sure?')) {
+          console.log('delete');
+          axios.post(`${url}/deleteEmployee`,{id:id}).then(function (response) {
+                  // handle success
+                  show_Toaster(response.data.message,response.data.type)                      
+                  if (response.data.type === 'success') {
+                    setTimeout(() => {
+                          window.location.href = `${url}/manage-emp`;
+                    }, 500);
+                  }
+              }).catch(function (err) {
+                  show_Toaster(err.response.data.message,'error')
+          })
+        }
       }
     </script>
   </body>

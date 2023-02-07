@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function(){
         return view('changePwd');
     })->name('changePwd');
     Route::post('/changePwd',[Controller::class,'changePwd']);
-
+    Route::post('/deleteEmployee',[Controller::class,'deleteEmployee']);
     Route::get('/manage-emp',[Controller::class,'manageEmp'])->name('manage');
 });
 
