@@ -210,8 +210,8 @@ class Controller extends BaseController
           [
               'cloud' => [
                   'cloud_name' => 'dp7qjwrsu',
-                  'api_key'    => '192242161812764',
-                  'api_secret' => '64puGHSNMlrT-fTVh3vCFkj1qGI',
+                  'api_key'    => env('CLOUD_KEY'),
+                  'api_secret' => env('CLOUD_SECRET'),
                   'url' => [
     'secure' => true]
               ],
