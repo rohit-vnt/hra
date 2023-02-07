@@ -30,3 +30,11 @@
 <script>
   const url = "{{ url('') }}";
 </script>
+<style>
+  @media only screen and (max-width: 768px) {
+    .layout-navbar{display:block;}
+  }
+  @media only screen and (min-width: 768px) {
+    .layout-navbar{display:none;}
+  }
+</style>

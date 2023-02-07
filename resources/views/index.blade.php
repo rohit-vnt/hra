@@ -36,7 +36,7 @@
         <div class="layout-page">
           <!-- Navbar -->
 
-          
+          @include('include.nav')
 
           <!-- / Navbar -->
 
