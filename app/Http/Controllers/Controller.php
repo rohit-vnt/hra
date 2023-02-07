@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Cloudinary\Cloudinary as Cloudinary;
 use App\Models\Employee;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel as Excel;
@@ -197,5 +197,44 @@ class Controller extends BaseController
           'type'=>'failed'
         ], 401);
       }
+    }
+
+    public function updateProfile(Request $request){
+      $user=$request->validate([
+        'name' => 'required|string',
+        'email' => 'required|string|email',
+        'mobile' => 'required|string',
+        'logo' => 'required',
+      ]);
+      $cloudinary = new Cloudinary(
+          [
+              'cloud' => [
+                  'cloud_name' => 'dp7qjwrsu',
+                  'api_key'    => '192242161812764',
+                  'api_secret' => '64puGHSNMlrT-fTVh3vCFkj1qGI',
+                  'url' => [
+    'secure' => true]
+              ],
+          ]
+      );
+      $data=$cloudinary->uploadApi()->upload($request->file('logo')->getRealPath());
+      $user['logo']=$data['secure_url'];
+      $update=User::where('id',Auth::user()->id)->update($user);
+      if($update){
+        return response()->json([
+          'message'=>'Profile Updated',
+          'type'=>'success'
+        ]);  
+      }else{
+        return response()->json([
+          'message' => 'Opps! Operation failed',
+          'type'=>'failed'
+        ], 401);
+      }
+    }
+
+    public function account(){
+      $data=User::where('id',Auth::user()->id)->get();
+      return view('account',['data'=>$data[0]]);
     }
   }

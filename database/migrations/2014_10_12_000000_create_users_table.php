@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('mobile',12)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('logo')->nullable();
             $table->string('last_login');
             $table->rememberToken();
             $table->timestamps();

@@ -27,28 +27,26 @@ Route::post('/login',[Controller::class,'login']);
 Route::get('/logout',[Controller::class,'logout'])->name('logout');
 Route::post('/resetPassword',[Controller::class,'forgetPwdMail']);
 
+// login mendatory
 Route::middleware('auth')->group(function(){
-    // login mendatory
+    // get routes
     Route::get('/dashboard',function(){
         return view('index');
     })->name('dashboard');
-
-    Route::get('/account',function(){
-        return view('account');
-    })->name('account');
-
+    Route::get('/account',[Controller::class,'account'])->name('account');
     Route::get('/add-employee',function(){
         return view('add-employee');
     })->name('account');
-
-    Route::post('/addEmployee',[Controller::class,'addEmployee']);
-
+    Route::get('/manage-emp',[Controller::class,'manageEmp'])->name('manage');
     Route::get('/changePwd',function(){
         return view('changePwd');
     })->name('changePwd');
+
+    // post routes
+    Route::post('/addEmployee',[Controller::class,'addEmployee']);
     Route::post('/changePwd',[Controller::class,'changePwd']);
     Route::post('/deleteEmployee',[Controller::class,'deleteEmployee']);
-    Route::get('/manage-emp',[Controller::class,'manageEmp'])->name('manage');
+    Route::post('/updateProfile',[Controller::class,'updateProfile']);
 });
 
 Route::get('/salary',[Controller::class,

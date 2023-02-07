@@ -280,7 +280,6 @@
       });
       function deleteEmp(id){
         if (confirm('Are you sure?')) {
-          console.log('delete');
           axios.post(`${url}/deleteEmployee`,{id:id}).then(function (response) {
                   // handle success
                   show_Toaster(response.data.message,response.data.type)                      
