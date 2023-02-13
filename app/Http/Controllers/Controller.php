@@ -77,7 +77,6 @@ class Controller extends BaseController
           'lastName' => 'required|string',
           'email' => 'required|string|email',
           'mobile' => 'required|string',
-          'empCode' => 'required|string',
           'department' => 'required|string',
           'designation' => 'required|string',
           'address' => 'required|string',
@@ -100,15 +99,29 @@ class Controller extends BaseController
         // add
         $emp=$request->validate([
           'firstName' => 'required|string',
+          'middleName' => 'required|string',
           'lastName' => 'required|string',
           'email' => 'required|string|email|unique:employees',
           'mobile' => 'required|string|unique:employees',
-          'empCode' => 'required|string|unique:employees',
+          'mobile2' => 'required|string',
           'department' => 'required|string',
           'designation' => 'required|string',
           'address' => 'required|string',
+          'p_address' => 'required|string',
           'joiningDate' => 'required|string',
           'ctc' => 'required|string',
+          'dob' => 'required|string',
+          'marital_status' => 'required',
+          'gender' => 'required',
+          'reporting' => 'required',
+          'aadhar' => 'required',
+          'pancard' => 'required',
+          'passport' => 'required',
+          'bank' => 'required',
+          'account_no' => 'required',
+          'name_bank' => 'required',
+          'branch_name' => 'required',
+          'ifsc' => 'required',
         ]);
         $emp['user_id']=Auth::user()->id;
         $user = new Employee($emp);

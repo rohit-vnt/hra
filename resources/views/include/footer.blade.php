@@ -1,5 +1,6 @@
 <!-- build:js assets/vendor/js/core.js -->
-<script src={{asset("assets/vendor/libs/jquery/jquery.js")}}></script>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+{{-- <script src={{asset("assets/vendor/libs/jquery/jquery.js")}}></script> --}}
 <script src={{asset("assets/vendor/libs/popper/popper.js")}}></script>
 <script src={{asset("assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js")}}></script>
 <script src={{asset("assets/vendor/js/menu.js")}}></script>

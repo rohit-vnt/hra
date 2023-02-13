@@ -37,7 +37,7 @@
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
-            <!-- Content -->
+            <!-- Content -->n
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> Add Employees</h4>
@@ -62,6 +62,10 @@
                               placeholder="first name"
                               autofocus
                             />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="lastName" class="form-label">Middle Name</label>
+                            <input class="form-control" type="text" name="middleName" id="middleName" placeholder="middle name" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Last Name</label>
@@ -91,8 +95,38 @@
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label">Employee code</label>
-                            <input type="text" class="form-control" id="empCode" name="empCode" placeholder="Employee code" />
+                            <label class="form-label" for="phoneNumber">Another Phone Number</label>
+                            <div class="input-group input-group-merge">
+                              <span class="input-group-text">IN (+91)</span>
+                              <input
+                                type="text"
+                                id="mobile2"
+                                name="mobile2"
+                                class="form-control"
+                                placeholder="8105550111"
+                              />
+                            </div>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">DOB</label>
+                            <input type="date" class="form-control" id="dob" name="dob" placeholder="Employee DOB" />
+                          </div>
+                          
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Marital Status</label>
+                            <select class="form-control" id="marital_status" name="marital_status">
+                              <option value="">choose</option>
+                              <option value="0">unmarried</option>
+                              <option value="1">married</option>  
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Gender</label>
+                            <select class="form-control" id="gender" name="gender">
+                              <option value="">choose</option>
+                              <option value="0">male</option>
+                              <option value="1">female</option>  
+                            </select>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="department" class="form-label">Department</label>
@@ -101,7 +135,7 @@
                               class="form-control"
                               id="department"
                               name="department"
-                              placeholder="Accounts"
+                              placeholder="Employee department"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -115,7 +149,11 @@
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">Address</label>
+                            <label for="address" class="form-label">Permanent Address</label>
+                            <input type="text" class="form-control" id="p_address" name="p_address" placeholder="Permanent Address" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="address" class="form-label">Current Address</label>
                             <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
                           </div>
                          
@@ -129,6 +167,14 @@
                             />
                           </div>
                           <div class="mb-3 col-md-6">
+                            <label class="form-label">Reporting Manager</label>
+                            <select class="form-control" id="reporting" name="reporting">
+                              <option value="">choose</option>
+                              <option value="1">Name</option>
+                              <option value="2">Name</option>  
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
                             <label for="ctc" class="form-label">CTC</label>
                             <input
                               type="text"
@@ -136,6 +182,97 @@
                               id="ctc"
                               name="ctc"
                               placeholder="e.g 600000"
+                            />
+                          </div>
+                          <hr/>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Aadhar</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="aadhar"
+                              name="aadhar"
+                              placeholder="Enter aadhar number"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label  class="form-label">Pancard No</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="pancard"
+                              name="pancard"
+                              placeholder="Enter pancard number"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Passport</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="passport"
+                              name="passport"
+                              placeholder="Enter Passport number"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Photo</label>
+                            <input
+                              type="file"
+                              class="form-control"
+                              id="photo"
+                              name="photo"
+                            />
+                          </div>
+                          <hr/>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Bank Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="bank"
+                              name="bank"
+                              placeholder="Enter Bank Name"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Account No</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="account_no"
+                              name="account_no"
+                              placeholder="Enter Account number"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Name in bank</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="name_bank"
+                              name="name_bank"
+                              placeholder="Enter Name In Bank"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">Branch Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="branch_name"
+                              name="branch_name"
+                              placeholder="Enter Branch Name"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label">IFSC</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="ifsc"
+                              name="ifsc"
+                              placeholder="Enter IFSC Code"
                             />
                           </div>
                         </div>
