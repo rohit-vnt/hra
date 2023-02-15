@@ -35,5 +35,6 @@ class Employee extends Model
         'name_bank',
         'branch_name',
         'ifsc',
+        'is_senior',
     ];
 }

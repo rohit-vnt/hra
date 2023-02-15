@@ -65,7 +65,7 @@
                         <tbody class="table-border-bottom-0">
                           @foreach ($employees as $employee)
                           <tr>
-                            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> {{$employee->empCode}} </td>
+                            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> EMP-{{$employee->id}} </td>
                             <td>{{$employee->firstName.' '.$employee->lastName}}</td>
                             <td>
                               {{$employee->department}}
@@ -127,6 +127,10 @@
                   />
                 </div>
                 <div class="mb-3 col-md-6">
+                  <label for="lastName" class="form-label">Middle Name</label>
+                  <input class="form-control" type="text" name="middleName" id="middleName" placeholder="middle name" />
+                </div>
+                <div class="mb-3 col-md-6">
                   <label for="lastName" class="form-label">Last Name</label>
                   <input class="form-control" type="text" name="lastName" id="lastName" placeholder="last name" />
                 </div>
@@ -154,8 +158,38 @@
                   </div>
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label class="form-label">Employee code</label>
-                  <input type="text" class="form-control" id="empCode" name="empCode" placeholder="Employee code" />
+                  <label class="form-label" for="phoneNumber">Another Phone Number</label>
+                  <div class="input-group input-group-merge">
+                    <span class="input-group-text">IN (+91)</span>
+                    <input
+                      type="text"
+                      id="mobile2"
+                      name="mobile2"
+                      class="form-control"
+                      placeholder="8105550111"
+                    />
+                  </div>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">DOB</label>
+                  <input type="date" class="form-control" id="dob" name="dob" placeholder="Employee DOB" />
+                </div>
+                
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Marital Status</label>
+                  <select class="form-control" id="marital_status" name="marital_status">
+                    <option value="">choose</option>
+                    <option value="0">unmarried</option>
+                    <option value="1">married</option>  
+                  </select>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Gender</label>
+                  <select class="form-control" id="gender" name="gender">
+                    <option value="">choose</option>
+                    <option value="0">male</option>
+                    <option value="1">female</option>  
+                  </select>
                 </div>
                 <div class="mb-3 col-md-6">
                   <label for="department" class="form-label">Department</label>
@@ -164,7 +198,7 @@
                     class="form-control"
                     id="department"
                     name="department"
-                    placeholder="Accounts"
+                    placeholder="Employee department"
                   />
                 </div>
                 <div class="mb-3 col-md-6">
@@ -178,7 +212,19 @@
                   />
                 </div>
                 <div class="mb-3 col-md-6">
-                  <label for="address" class="form-label">Address</label>
+                  <label class="form-label">Is senior?</label>
+                  <select class="form-control" id="is_senior" name="is_senior">
+                    <option value="">choose</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>  
+                  </select>
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="address" class="form-label">Permanent Address</label>
+                  <input type="text" class="form-control" id="p_address" name="p_address" placeholder="Permanent Address" />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label for="address" class="form-label">Current Address</label>
                   <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
                 </div>
                
@@ -191,6 +237,7 @@
                     name="joiningDate"
                   />
                 </div>
+                
                 <div class="mb-3 col-md-6">
                   <label for="ctc" class="form-label">CTC</label>
                   <input
@@ -199,6 +246,97 @@
                     id="ctc"
                     name="ctc"
                     placeholder="e.g 600000"
+                  />
+                </div>
+                <hr/>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Aadhar</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="aadhar"
+                    name="aadhar"
+                    placeholder="Enter aadhar number"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label  class="form-label">Pancard No</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pancard"
+                    name="pancard"
+                    placeholder="Enter pancard number"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Passport</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="passport"
+                    name="passport"
+                    placeholder="Enter Passport number"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Photo</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="photo"
+                    name="photo"
+                  />
+                </div>
+                <hr/>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Bank Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bank"
+                    name="bank"
+                    placeholder="Enter Bank Name"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Account No</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="account_no"
+                    name="account_no"
+                    placeholder="Enter Account number"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Name in bank</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name_bank"
+                    name="name_bank"
+                    placeholder="Enter Name In Bank"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Branch Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="branch_name"
+                    name="branch_name"
+                    placeholder="Enter Branch Name"
+                  />
+                </div>
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">IFSC</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="ifsc"
+                    name="ifsc"
+                    placeholder="Enter IFSC Code"
                   />
                 </div>
               </div>
@@ -210,8 +348,8 @@
             </button>
             <button type="submit" class="btn btn-primary">Save changes</button>
           </div>
+        </form>
         </div>
-      </form>
       </div>
     </div>
     <!-- Core JS -->
@@ -253,15 +391,31 @@
       function editEmp(data){
         $('#emp_id').val(data.id)
         $('#firstName').val(data.firstName)
+        $('#middleName').val(data.middleName)
         $('#lastName').val(data.lastName)
         $('#email').val(data.email)
         $('#mobile').val(data.mobile)
+        $('#mobile2').val(data.mobile2)
         $('#address').val(data.address)
+        $('#p_address').val(data.p_address)
         $('#ctc').val(data.ctc)
         $('#department').val(data.department)
         $('#designation').val(data.designation)
-        $('#empCode').val(data.empCode)
+        $('#empCode').val(data.id)
         $('#joiningDate').val(data.joiningDate)
+        $('#reporting').val(data.reporting)
+        $('#gender').val(data.gender)
+        $('#marital_status').val(data.marital_status)
+        $('#dob').val(data.dob)
+        $('#aadhar').val(data.aadhar)
+        $('#pancard').val(data.pancard)
+        $('#passport').val(data.passport)
+        $('#bank').val(data.bank)
+        $('#account_no').val(data.account_no)
+        $('#name_bank').val(data.name_bank)
+        $('#branch_name').val(data.branch_name)
+        $('#ifsc').val(data.ifsc)
+        $('#is_senior').val(data.is_senior)
         $('#basicModal').modal('show');
       }
       $('#editEmployee').submit(function(e){

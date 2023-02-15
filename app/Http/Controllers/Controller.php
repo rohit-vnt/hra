@@ -74,15 +74,32 @@ class Controller extends BaseController
         // update
         $emp=$request->validate([
           'firstName' => 'required|string',
+          'middleName' => 'required|string',
           'lastName' => 'required|string',
           'email' => 'required|string|email',
           'mobile' => 'required|string',
+          'mobile2' => 'required|string',
           'department' => 'required|string',
           'designation' => 'required|string',
           'address' => 'required|string',
+          'p_address' => 'required|string',
           'joiningDate' => 'required|string',
           'ctc' => 'required|string',
+          'dob' => 'required|string',
+          'marital_status' => 'required',
+          'gender' => 'required',
+          'aadhar' => 'required',
+          'pancard' => 'required',
+          'passport' => 'required',
+          'bank' => 'required',
+          'account_no' => 'required',
+          'name_bank' => 'required',
+          'branch_name' => 'required',
+          'ifsc' => 'required',
+          'is_senior' => 'required',
         ]);
+        $path = $request->file('photo')->store('photo');
+        $emp['photo']=$path;
         $user = Employee::where('id',$request->input('emp_id'))->update($emp);
         if($user){
           return response()->json([
@@ -122,7 +139,10 @@ class Controller extends BaseController
           'name_bank' => 'required',
           'branch_name' => 'required',
           'ifsc' => 'required',
+          'is_senior' => 'required',
         ]);
+        $path = $request->file('photo')->store('photo');
+        $emp['photo']=$path;
         $emp['user_id']=Auth::user()->id;
         $user = new Employee($emp);
         if($user->save()){
@@ -189,6 +209,10 @@ class Controller extends BaseController
           'type'=>'failed'
         ], 401);
       }
+    }
+    public function addEmp(){
+      $senior=Employee::where('is_senior',1)->get();
+      return view('add-employee',['seniors'=>$senior]);
     }
     public function manageEmp(){
       $emp=Employee::orderBy('id','desc')->get();

@@ -37,7 +37,7 @@
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
-            <!-- Content -->n
+            <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> Add Employees</h4>
@@ -149,6 +149,14 @@
                             />
                           </div>
                           <div class="mb-3 col-md-6">
+                            <label class="form-label">Is senior?</label>
+                            <select class="form-control" id="is_senior" name="is_senior">
+                              <option value="">choose</option>
+                              <option value="1">Yes</option>
+                              <option value="0">No</option>  
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Permanent Address</label>
                             <input type="text" class="form-control" id="p_address" name="p_address" placeholder="Permanent Address" />
                           </div>
@@ -170,8 +178,9 @@
                             <label class="form-label">Reporting Manager</label>
                             <select class="form-control" id="reporting" name="reporting">
                               <option value="">choose</option>
-                              <option value="1">Name</option>
-                              <option value="2">Name</option>  
+                              @foreach($seniors as $senior)
+                              <option value="{{$senior->id}}">{{$senior->firstName.' '.$senior->lastName}}</option>
+                              @endforeach
                             </select>
                           </div>
                           <div class="mb-3 col-md-6">

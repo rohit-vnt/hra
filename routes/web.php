@@ -34,9 +34,7 @@ Route::middleware('auth')->group(function(){
         return view('index');
     })->name('dashboard');
     Route::get('/account',[Controller::class,'account'])->name('account');
-    Route::get('/add-employee',function(){
-        return view('add-employee');
-    })->name('account');
+    Route::get('/add-employee',[Controller::class,'addEmp']);
     Route::get('/manage-emp',[Controller::class,'manageEmp'])->name('manage');
     Route::get('/changePwd',function(){
         return view('changePwd');

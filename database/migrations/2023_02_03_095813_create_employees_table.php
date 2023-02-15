@@ -42,8 +42,9 @@ return new class extends Migration
             $table->string('branch_name');
             $table->string('ifsc');
             $table->date('last_working_date')->nullable();
-            $table->string('on_notice')->nullable()->comment("1=yes,0=no");
-            $table->string('status')->nullable()->comment("1=active,0=inactive");
+            $table->string('on_notice')->nullable()->comment("1=yes,0=no")->default(0);
+            $table->string('is_senior')->nullable()->comment("1=yes,0=no")->default(0);
+            $table->string('status')->nullable()->comment("1=active,0=inactive")->default(1);
             $table->timestamps();
         });
     }
