@@ -24,6 +24,7 @@ Route::get('/forgot-password',function(){
 
 
 Route::post('/login',[Controller::class,'login']);
+Route::get('/salary-slip',[Controller::class,'salarySlip']);
 Route::get('/logout',[Controller::class,'logout'])->name('logout');
 Route::post('/resetPassword',[Controller::class,'forgetPwdMail']);
 

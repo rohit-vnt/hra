@@ -49,20 +49,22 @@ class Controller extends BaseController
         $request->validate([
             'email' => 'required|string',
             'password' => 'required|string'
-          ]);
-          $credentials = request(['email', 'password']);
-          if(!Auth::attempt($credentials))
-            return response()->json([
-              'message' => 'Unauthorized',
-              'type'=>'failed'
-            ], 401);
-          // return redirect('/dev/home');
+        ]);
+        $credentials = request(['email', 'password']);
+        if(!Auth::attempt($credentials))
           return response()->json([
-            'message'=>'welcome',
-            'type'=>'success'
-          ]);
+            'message' => 'Unauthorized',
+            'type'=>'failed'
+          ], 401);
+        // return redirect('/dev/home');
+        return response()->json([
+          'message'=>'welcome',
+          'type'=>'success'
+        ]);
     }
-
+    public function salarySlip(){
+      return view('salarySlip');
+    }
     public function logout()
     {
       Auth::logout();
