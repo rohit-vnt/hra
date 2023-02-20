@@ -145,7 +145,7 @@ class Controller extends BaseController
         ]);
         $path = $request->file('photo')->store('photo');
         $emp['photo']=$path;
-        $emp['user_id']=Auth::user()->id;
+        $emp['company_id']=Auth::user()->id;
         $user = new Employee($emp);
         if($user->save()){
           return response()->json([
@@ -168,9 +168,18 @@ class Controller extends BaseController
     }
 
     public function import(Request $request){
-        Excel::import(new ImportUser,
+        $import=Excel::import(new ImportUser,
                       $request->file('file')->store('files'));
-        return redirect()->back();
+        if($import)
+        return response()->json([
+          'message'=>'Excel uploaded',
+          'type'=>'success'
+        ]);
+        else
+        return response()->json([
+          'message'=>'operation failed',
+          'type'=>'failed'
+        ]);
     }
     // excel end
     public function forgetPwdMail(Request $request)

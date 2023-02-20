@@ -50,7 +50,7 @@
                     <h5 class="card-header">Import Excel</h5>
                     <hr class="my-0" />
                     <div class="card-body">
-                      <form  action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                      <form id="import" enctype="multipart/form-data">
                         <div class="row">
                             @csrf
                             <div class="mb-3 col-md-12">
@@ -92,5 +92,21 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     @include('include.footer');
+    <script>
+      $('#import').on('submit',function(e){
+          e.preventDefault();
+          axios.post(`${url}/import`,new FormData(this)).then(function (response) {
+                  // handle success
+                  show_Toaster(response.data.message,response.data.type)
+                  if (response.data.type === 'success') {
+                      setTimeout(() => {
+                          window.location.href = `${url}/salary`;
+                      }, 500);
+                  }
+              }).catch(function (err) {
+                  show_Toaster(err.response.data.message,'error')
+          })
+      });
+    </script>
   </body>
 </html>

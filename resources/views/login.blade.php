@@ -109,7 +109,7 @@
               }).catch(function (err) {
                   show_Toaster(err.response.data.message,'error')
           })
-       });
-      </script>
+      });
+    </script>
   </body>
 </html>

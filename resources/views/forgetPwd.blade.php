@@ -58,6 +58,7 @@
                                 </tr>
                             </table>
                         </td>
+                    </tr>
                     <tr>
                         <td style="height:20px;">&nbsp;</td>
                     </tr>

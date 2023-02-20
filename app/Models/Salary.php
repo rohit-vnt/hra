@@ -9,12 +9,22 @@ class salary extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'empCode',
+        'company_id',  
+        'empCode',  
+        'days_worked',
         'basic',
+        'pf',
         'hra',
-        'ca',
-        'total'
+        'pt',
+        'cca',
+        'esic',
+        'shift_allowance',
+        'advance',
+        'skill_allowance',
+        'leave_encashment',
+        'gross_earning',
+        'total_deduction',
+        'net_pay'
     ];
 }
 
