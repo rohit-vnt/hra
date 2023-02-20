@@ -2,10 +2,11 @@
 
 namespace App\Imports;
 
+use App\Models\Employee;
 use App\Models\salary;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
-
+use PDF;
 class ImportUser implements ToModel
 {
     /**
@@ -15,6 +16,10 @@ class ImportUser implements ToModel
     */
     public function model(array $row)
     {
+        $emp=Employee::where('id',$row[0])->find(1);
+        $renderedData=PDF::loadView('salarySlip',compact('row','emp'));
+        $file=public_path('pdf/').$row[0].time().'.'.'pdf';
+        if($renderedData->save($file)){
         return new salary([
            'company_id' => Auth::user()->id,  
            'empCode' => $row[0],  
@@ -32,6 +37,9 @@ class ImportUser implements ToModel
            'gross_earning' => $row[12],
            'total_deduction' => $row[13],
            'net_pay' => $row[14],
+           'salary_date' => date('Y-m-d',strtotime($row[15])),
+           'slip_url' => $file,
         ]);
+    }
     }
 }

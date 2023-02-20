@@ -15,6 +15,10 @@ use App\Imports\ImportUser;
 use Illuminate\Support\Facades\Hash;
 use Mail;
 use App\Mail\forgetPwd;
+use App\Mail\Slip;
+use App\Models\salary;
+use PDF;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class Controller extends BaseController
@@ -284,5 +288,28 @@ class Controller extends BaseController
     public function account(){
       $data=User::where('id',Auth::user()->id)->get();
       return view('account',['data'=>$data[0]]);
+    }
+    public function salaryMail(Request $request){
+      $data=$request->validate([
+        'date' => 'required|string'
+      ]);
+      $emp=DB::table('salaries')->join('employees','salaries.empCode','=','employees.id')->select('salaries.slip_url','employees.email','employees.firstName')->whereDate('salaries.salary_date',$data['date'])->get();
+      $count=0;
+      foreach($emp as $em){
+        Mail::to($em->email)->send(new Slip(array('name'=>$em->firstName,'attach'=>$em->slip_url)));
+        $count++;
+      }
+      if($count>0){
+        return response()->json([
+          'message'=>$count.' Mail Sent',
+          'type'=>'success'
+        ]);  
+      }else{
+        return response()->json([
+          'message' => 'No data found for this date',
+          'type'=>'failed'
+        ], 401);
+      }
+
     }
   }

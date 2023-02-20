@@ -43,7 +43,7 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
-                <div class="col-md-3"></div>
+                
                 <div class="col-md-6">
                     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Salary /</span> Import Excel</h4>
                   <div class="card mb-4">
@@ -70,9 +70,36 @@
                       </form>
                     </div>
                   </div>
-                  <div class="col-md-3"></div>
+                  
+                </div>
+                <div class="col-md-6">
+                  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Mail salary slip </span></h4>
+                  <div class="card mb-4">
+                    <h5 class="card-header">Send salary slip</h5>
+                    <hr class="my-0" />
+                    <div class="card-body">
+                      <form id="salary" enctype="multipart/form-data">
+                        <div class="row">
+                            @csrf
+                            <div class="mb-3 col-md-12">
+                              <label class="form-label">Choose salary date</label>
+                              <input
+                                class="form-control"
+                                type="date" name="date"
+                              />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="mt-2">
+                            <button type="submit" class="btn btn-primary me-2">Send Mail</button>
+                            </div>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
+              
             </div>
             <!-- / Content -->
 
@@ -96,6 +123,21 @@
       $('#import').on('submit',function(e){
           e.preventDefault();
           axios.post(`${url}/import`,new FormData(this)).then(function (response) {
+                  // handle success
+                  show_Toaster(response.data.message,response.data.type)
+                  if (response.data.type === 'success') {
+                      setTimeout(() => {
+                          window.location.href = `${url}/salary`;
+                      }, 500);
+                  }
+              }).catch(function (err) {
+                  show_Toaster(err.response.data.message,'error')
+          })
+      });
+      
+      $('#salary').on('submit',function(e){
+          e.preventDefault();
+          axios.post(`${url}/salaryMail`,new FormData(this)).then(function (response) {
                   // handle success
                   show_Toaster(response.data.message,response.data.type)
                   if (response.data.type === 'success') {

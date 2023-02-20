@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('gross_earning',20);
             $table->string('total_deduction',20);
             $table->string('net_pay',20);
+            $table->string('slip_url',100)->nullable();
+            $table->string('salary_date')->nullable();
             $table->timestamps();
         });
     }

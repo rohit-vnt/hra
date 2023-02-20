@@ -40,17 +40,15 @@ Route::middleware('auth')->group(function(){
     Route::get('/changePwd',function(){
         return view('changePwd');
     })->name('changePwd');
+    Route::get('/salary',[Controller::class,'importView'])->name('import-view');
+            Route::get('/export-users',[Controller::class,'exportUsers'])->name('export-users');
 
     // post routes
+    Route::post('/import',[Controller::class,'import'])->name('import');
     Route::post('/addEmployee',[Controller::class,'addEmployee']);
     Route::post('/changePwd',[Controller::class,'changePwd']);
     Route::post('/deleteEmployee',[Controller::class,'deleteEmployee']);
     Route::post('/updateProfile',[Controller::class,'updateProfile']);
+    Route::post('/salaryMail',[Controller::class,'salaryMail']);
 });
 
-Route::get('/salary',[Controller::class,
-            'importView'])->name('import-view');
-Route::post('/import',[Controller::class,
-        'import'])->name('import');
-Route::get('/export-users',[Controller::class,
-        'exportUsers'])->name('export-users');

@@ -1,8 +1,5 @@
 <html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <style>
             table, th, td {
                 border: 1px solid black;
@@ -14,39 +11,41 @@
         </style>
     </head>
     <body>
-        <table id="contnet">
+        <table>
             <tr>
-                <td colspan="14" style="text-align: center;">PAYSLIP FOR THE MONTH OF JAN 2023</td>
+                <td colspan="14" style="text-align: center;">PAYSLIP FOR THE MONTH OF {{date('M Y',strtotime($row[15]))}}</td>
             </tr>
             <tr>
-                <td colspan="8">EMP NO :</td>
-                <td colspan="6">DAYS WORKED :</td>
+                <td colspan="8">EMP NO : EMP-{{$row[0]}}</td>
+                <td colspan="6">DAYS WORKED : {{$row[1]}}</td>
             </tr>
             <tr>
-                <td colspan="8">NAME :</td>
-                <td colspan="6">EMP DOJ :</td>
+                <td colspan="8">NAME : {{ucfirst($emp['firstName']).' '.ucfirst($emp['middleName']).' '.ucfirst($emp['lastName'])}}</td>
+                <td colspan="6">EMP DOJ : {{$emp['dob']}}</td>
             </tr>
             <tr>
-                <td colspan="8">GENDER :</td>
+                <td colspan="8">GENDER : {{$emp['gender']==1?'Female':'Male'}}</td>
+                <td colspan="6"></td>
             </tr>
             <tr>
-                <td colspan="8">GRADE :</td>
+                <td colspan="8">GRADE : </td>
+                <td colspan="6"></td>
             </tr>
             <tr>
-                <td colspan="8">DESG CD:</td>
-                <td colspan="6">EMP PAN :</td>
+                <td colspan="8">DESG CD: {{$emp['designation']}}</td>
+                <td colspan="6">EMP PAN : {{$emp['pancard']}}</td>
             </tr>
             <tr>
-                <td colspan="8">DEPARTMENT:</td>
-                <td colspan="6">ESIC NO :</td>
+                <td colspan="8">DEPARTMENT:  {{$emp['department']}}</td>
+                <td colspan="6">ESIC NO:  </td>
             </tr>
             <tr>
-                <td colspan="8">LOCATION:</td>
-                <td colspan="6">UAN :</td>
+                <td colspan="8">LOCATION:  {{$emp['address']}}</td>
+                <td colspan="6">UAN:  {{$emp['aadhar']}}</td>
             </tr>
             <tr>
-                <td colspan="8">BANK NAME:</td>
-                <td colspan="6">BANK A/C :</td>
+                <td colspan="8">BANK NAME:  {{$emp['bank']}}</td>
+                <td colspan="6">BANK A/C :  {{$emp['account_no']}}</td>
             </tr>   
             <tr>
                 <td colspan="2">EARNING</td>
@@ -140,22 +139,4 @@
             </tr>
         </table>
     </body>
-    <script>
-    function download(){
-        window.jsPDF = window.jspdf.jsPDF;
-        var doc = new jsPDF();
-        // Source HTMLElement or a string containing HTML.
-        var elementHTML = document.querySelector("#contnet");
-        doc.html(elementHTML, {
-            callback: function(doc) {
-                // Save the PDF
-                doc.save('sample-document.pdf');
-            },
-            x: 15,
-            y: 15,
-            width: 170, //target width in the PDF document
-            windowWidth: 650 //window width in CSS pixels
-        });
-    }
-    </script>
 </html>

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class salary extends Model
 {
@@ -24,7 +26,9 @@ class salary extends Model
         'leave_encashment',
         'gross_earning',
         'total_deduction',
-        'net_pay'
+        'net_pay',
+        'slip_url',
+        'salary_date',
     ];
 }
 
