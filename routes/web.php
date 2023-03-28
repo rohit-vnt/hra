@@ -22,7 +22,7 @@ Route::get('/forgot-password',function(){
     return view('forgot-password');
 })->name('forgot-password');
 
-
+Route::view('/slip','slip');
 Route::post('/login',[Controller::class,'login']);
 Route::get('/salary-slip',[Controller::class,'salarySlip']);
 Route::get('/logout',[Controller::class,'logout'])->name('logout');
@@ -31,9 +31,7 @@ Route::post('/resetPassword',[Controller::class,'forgetPwdMail']);
 // login mendatory
 Route::middleware('auth')->group(function(){
     // get routes
-    Route::get('/dashboard',function(){
-        return view('index');
-    })->name('dashboard');
+    Route::get('/dashboard',[Controller::class,'dashboard'])->name('dashboard');
     Route::get('/account',[Controller::class,'account'])->name('account');
     Route::get('/add-employee',[Controller::class,'addEmp']);
     Route::get('/manage-emp',[Controller::class,'manageEmp'])->name('manage');

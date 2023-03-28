@@ -164,7 +164,18 @@
                             <label for="address" class="form-label">Current Address</label>
                             <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
                           </div>
-                         
+                          <div class="mb-3 col-md-6">
+                            <label for="address" class="form-label">City </label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="address" class="form-label">Grade </label>
+                            <input type="text" class="form-control" id="grade" name="grade" placeholder="Grade" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="address" class="form-label">ESIC No </label>
+                            <input type="text" class="form-control" id="esic_no" name="esic_no" placeholder="ESIC No" />
+                          </div>
                           <div class="mb-3 col-md-6">
                             <label for="joining" class="form-label">Joining Date</label>
                             <input

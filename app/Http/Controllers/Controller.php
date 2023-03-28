@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Mail;
 use App\Mail\forgetPwd;
 use App\Mail\Slip;
-use App\Models\salary;
+use App\Models\Salary;
 use PDF;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail as FacadesMail;
@@ -48,6 +48,14 @@ class Controller extends BaseController
           }else{
             return response()->json(['error'=>'Provide proper details']);
           }
+    }
+    public function dashboard(){
+      $empCount=Employee::where('status',1)->count();
+      $inActive=Employee::where('status',0)->count();
+      $notice=Employee::where('on_notice',1)->count();
+      $salary_date=Salary::orderBy('id','desc')->limit(1)->get();
+      $date=!empty($salary_date[0]['salary_date'])?$salary_date[0]['salary_date']:'';
+      return view('index',['count'=>$empCount,'inactive'=>$inActive,'salary_date'=>$date,'notice'=>$notice]);
     }
     public function login(Request $request){
         $request->validate([
@@ -88,24 +96,30 @@ class Controller extends BaseController
           'department' => 'required|string',
           'designation' => 'required|string',
           'address' => 'required|string',
+          'city' => 'required|string',
+          'grade' => 'required|string',
+          'esic_no' => 'required|string',
           'p_address' => 'required|string',
           'joiningDate' => 'required|string',
           'ctc' => 'required|string',
           'dob' => 'required|string',
           'marital_status' => 'required',
           'gender' => 'required',
-          'aadhar' => 'required',
-          'pancard' => 'required',
-          'passport' => 'required',
-          'bank' => 'required',
-          'account_no' => 'required',
-          'name_bank' => 'required',
-          'branch_name' => 'required',
-          'ifsc' => 'required',
+          // 'aadhar' => 'required',
+          // 'pancard' => 'required',
+          // 'passport' => 'required',
+          // 'bank' => 'required',
+          // 'account_no' => 'required',
+          // 'name_bank' => 'required',
+          // 'branch_name' => 'required',
+          // 'ifsc' => 'required',
           'is_senior' => 'required',
         ]);
-        $path = $request->file('photo')->store('photo');
-        $emp['photo']=$path;
+        if(!empty($request->file('photo'))){
+          $path = $request->file('photo')->store('photo');
+          $emp['photo']=$path;
+        }
+        
         $user = Employee::where('id',$request->input('emp_id'))->update($emp);
         if($user){
           return response()->json([
@@ -130,26 +144,33 @@ class Controller extends BaseController
           'department' => 'required|string',
           'designation' => 'required|string',
           'address' => 'required|string',
+          'city' => 'required|string',
+          'grade' => 'required|string',
+          'esic_no' => 'required|string',
           'p_address' => 'required|string',
           'joiningDate' => 'required|string',
           'ctc' => 'required|string',
           'dob' => 'required|string',
           'marital_status' => 'required',
           'gender' => 'required',
-          'reporting' => 'required',
-          'aadhar' => 'required',
-          'pancard' => 'required',
-          'passport' => 'required',
-          'bank' => 'required',
-          'account_no' => 'required',
-          'name_bank' => 'required',
-          'branch_name' => 'required',
-          'ifsc' => 'required',
+          // 'aadhar' => 'required',
+          // 'pancard' => 'required',
+          // 'passport' => 'required',
+          // 'bank' => 'required',
+          // 'account_no' => 'required',
+          // 'name_bank' => 'required',
+          // 'branch_name' => 'required',
+          // 'ifsc' => 'required',
           'is_senior' => 'required',
         ]);
-        $path = $request->file('photo')->store('photo');
-        $emp['photo']=$path;
+        if($request->reporting)
+        $emp['reporting']=$request->reporting;
+        if(!empty($request->file('photo'))){
+          $path = $request->file('photo')->store('photo');
+          $emp['photo']=$path;
+        }
         $emp['company_id']=Auth::user()->id;
+        $emp['user_id']=Auth::user()->id;
         $user = new Employee($emp);
         if($user->save()){
           return response()->json([
@@ -293,7 +314,7 @@ class Controller extends BaseController
       $data=$request->validate([
         'date' => 'required|string'
       ]);
-      $emp=DB::table('salaries')->join('employees','salaries.empCode','=','employees.id')->select('salaries.slip_url','employees.email','employees.firstName')->whereDate('salaries.salary_date',$data['date'])->get();
+      $emp=DB::table('salaries')->join('employees','salaries.empCode','=','employees.user_id')->select('salaries.slip_url','employees.email','employees.firstName')->whereDate('salaries.salary_date',$data['date'])->get();
       $count=0;
       foreach($emp as $em){
         Mail::to($em->email)->send(new Slip(array('name'=>$em->firstName,'attach'=>$em->slip_url)));

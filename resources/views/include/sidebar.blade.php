@@ -52,12 +52,12 @@
           <div data-i18n="Analytics">Salary</div>
         </a>
       </li>
-      <li class="menu-item">
+      {{-- <li class="menu-item">
         <a href="#" class="menu-link">
           <i class="menu-icon tf-icons bx bx-export"></i>
           <div data-i18n="Analytics">Reports</div>
         </a>
-      </li>
+      </li> --}}
       <li class="menu-item">
         <a href="{{route('changePwd')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cog"></i>

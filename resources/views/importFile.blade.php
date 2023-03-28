@@ -45,7 +45,7 @@
               <div class="row">
                 
                 <div class="col-md-6">
-                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Salary /</span> Import Excel</h4>
+                    <h4 class="fw-bold py-3 mb-4"> Import Excel</h4>
                   <div class="card mb-4">
                     <h5 class="card-header">Import Excel</h5>
                     <hr class="my-0" />
@@ -73,7 +73,7 @@
                   
                 </div>
                 <div class="col-md-6">
-                  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Mail salary slip </span></h4>
+                  <h4 class="fw-bold py-3 mb-4">Mail salary slip</h4>
                   <div class="card mb-4">
                     <h5 class="card-header">Send salary slip</h5>
                     <hr class="my-0" />

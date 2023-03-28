@@ -54,34 +54,35 @@
                       <div class="card">
                         <div class="card-body">
                           <span class="d-block mb-1 avatar-initial rounded text-primary"><i class="menu-icon tf-icons bx bx-user"></i>Total Employees</span>
-                          <h3 class="card-title text-nowrap mb-2">108</h3>
+                          <h3 class="card-title text-nowrap mb-2">{{$count}}</h3>
                         </div>
                       </div>
                     </div>
                     <div class="col-3 mb-4">
                       <div class="card">
                         <div class="card-body">
-                          <span class="d-block mb-1 avatar-initial rounded text-primary"><i class="menu-icon tf-icons bx bx-user"></i>dummy</span>
-                          <h3 class="card-title mb-2">101</h3>
+                          <span class="d-block mb-1 avatar-initial rounded text-primary"><i class="menu-icon tf-icons bx bx-user"></i>Total InActive Employees</span>
+                          <h3 class="card-title mb-2">{{$inactive}}</h3>
                         </div>
                       </div>
                     </div>
                     <div class="col-3 mb-4">
                       <div class="card">
                         <div class="card-body">
-                          <span class="d-block mb-1 avatar-initial rounded text-primary"><i class="menu-icon tf-icons bx bx-world"></i>dummy</span>
-                          <h3 class="card-title text-nowrap mb-2">2</h3>
+                          <span class="d-block mb-1 avatar-initial rounded text-primary"><i class="menu-icon tf-icons bx bx-world"></i>Last salary released date</span>
+                          <h3 class="card-title mb-2">{{date('d M',strtotime($salary_date))}}</h3>
                         </div>
                       </div>
                     </div>
                     <div class="col-3 mb-4">
                       <div class="card">
                         <div class="card-body">
-                          <span class="d-block mb-1 avatar-initial rounded text-primary"><i class="menu-icon tf-icons bx bx-world"></i>dummy</span>
-                          <h3 class="card-title mb-2">1</h3>
+                          <span class="d-block mb-1 avatar-initial rounded text-primary"><i class="menu-icon tf-icons bx bx-user"></i>Employees on notice period</span>
+                          <h3 class="card-title mb-2">{{$notice}}</h3>
                         </div>
                       </div>
                     </div>
+                   
                   </div>
                 </div>
                 

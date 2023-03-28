@@ -16,8 +16,8 @@ class ImportUser implements ToModel
     */
     public function model(array $row)
     {
-        $emp=Employee::where('id',$row[0])->find(1);
-        $renderedData=PDF::loadView('salarySlip',compact('row','emp'));
+        [$emp]=Employee::where('user_id',$row[0])->get();
+        $renderedData=PDF::loadView('slip',compact('row','emp'));
         $file=public_path('pdf/').$row[0].time().'.'.'pdf';
         if($renderedData->save($file)){
         return new salary([

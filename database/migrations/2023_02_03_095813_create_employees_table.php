@@ -26,8 +26,11 @@ return new class extends Migration
             $table->string('department',20);
             $table->string('designation',20);
             $table->string('p_address');
-            $table->integer('reporting')->comment("reporting manage emp id");
+            $table->integer('reporting')->nullable()->comment("reporting manage emp id");
             $table->string('address');
+            $table->string('city');
+            $table->string('grade');
+            $table->string('esic_no');
             $table->string('dob');
             $table->integer('marital_status')->comment("unmarried=0,married=1");
             $table->integer('gender')->comment("male=0,female=1");

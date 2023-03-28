@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Ubuntu&display=swap");
+
+*{
+    list-style: none;
+}
+
+html{
+    font-family: Courier New;
+    font-size: 10px;
+    overflow-x: hidden;
+    width: 85rem;
+}
+
+body{
+    border: 3px solid #000;
+    margin: 1rem 2rem;
+    padding: 2rem 3rem 2rem 2rem;
+}
+
+.logo{
+    text-align: center;
+}
+
+.logo img{
+    width: 200px;
+}
+
+.divideline{
+    border: 0.1px solid #b9b7b7;
+}
+
+.top1,
+.top2 ul,
+.top3,
+.top4 ul
+{
+    display: flex;
+}
+
+.top1 ul,
+.top2 ul,
+.top3 ul,
+.top4 ul
+{
+    padding-left: 0;
+}
+
+.ul-li-2,
+.ul-li-4
+{
+    margin-left: 0.5rem;
+    margin-right: 20rem;
+}
+
+.top2 .li-2{
+    margin-left: 15rem;
+}
+
+.top2 .li-3{
+    margin-left: 2rem;
+    display: grid;
+}
+
+.top2 .li-4{
+    margin-left: 1.5rem;
+}
+
+.top2 .li-5{
+    margin-left: 1.5rem;
+}
+
+.top2 .li-6{
+    margin-left: 0.7rem;
+}
+
+.top2 .li-7{
+    margin-left: 7rem;
+}
+
+.top3 .ul-li-7{
+    padding-left: 3.5rem;
+}
+
+.top3 .ul-li-8{
+    padding-left: 2.5rem;
+}
+
+.ul-li-8 li{
+    justify-content: right;
+}
+
+.top3 .ul-li-9{
+    padding-left: 6rem;
+}
+
+.ul-li-10 li{
+    justify-content: right;
+}
+
+.top3 .ul-li-10{
+    padding-left: 2.5rem;
+}
+
+.top3 .ul-li-13{
+    padding-left: 3.5rem;
+}
+
+.top3 li{
+    display: flex;
+}
+
+.top4 .li-g1{
+    margin-left: 16.2rem;
+}
+
+.top4 .li-g2{
+    margin-left: 6rem;
+}
+
+.top4 .li-g3{
+    margin-left: 2.5rem;
+}
+
+.top4 .li-g4{
+    margin-left: 7.5rem;
+}
+
+
+
